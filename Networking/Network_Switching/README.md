@@ -7,9 +7,21 @@
 # Introduction to Network Switching | Layer 2 Fundamentals Explained
 
 **Source:** [Introduction to Network Switching | Layer 2 Fundamentals Explained](http://www.youtube.com/watch?v=VYukAH86d2I)
+
 **Channel:** telecomTech
 
+<br>
+
+<br>
+
 ---
+
+---
+
+<br>
+
+<br>
+
 
 ## 1. Overview of the OSI Model and Layers
 
@@ -123,6 +135,10 @@ Here is how this process links directly with how `traceroute` works:
 
 ---
 
+<br>
+
+<br>
+
 
 
 # How a Network Switch Works | CCNA Layer 2 Explained Simply
@@ -189,6 +205,10 @@ When communication starts on a freshly booted switch (e.g., Host A communicating
 ---
 
 ---
+
+<br>
+
+<br>
 
 
 # Introduction to Ethernet | CCNA Layer 2 Basics
