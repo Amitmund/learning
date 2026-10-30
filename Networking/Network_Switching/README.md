@@ -80,3 +80,36 @@ The Data Link layer is divided into two primary sublayers:
 * Virtual LANs (VLANs) and trunks
 * Layer 2 loops and loop prevention protocols (Spanning Tree Protocol / STP)
 * Security configurations (Port security, private VLANs)
+
+
+---
+
+
+Yes, **every time a packet crosses a router (a Layer 3 device), the Layer 2 MAC addresses are completely stripped away and replaced with new ones.**
+
+Here is how this process links directly with how `traceroute` works:
+
+### 1. What Happens to MAC Addresses at Every Hop?
+
+* When a device sends a packet to a router, the destination MAC address of the Ethernet frame is set to that router's incoming interface MAC address.
+* Once the router receives the frame, it **decapsulates** it (strips off the Ethernet header and trailer) to inspect the Layer 3 IP packet.
+* The router looks up its routing table to find the next hop, decrements the TTL, and **re-encapsulates** the packet into a *brand-new* Ethernet frame.
+* In this new frame, the **Source MAC** becomes the router's outgoing interface MAC, and the **Destination MAC** becomes the MAC address of the next router (or final destination).
+* Therefore, while the **IP addresses** (source and destination) remain the same across the journey, the **MAC addresses change at every single router hop**.
+
+---
+
+### 2. How This Links with `Traceroute`
+
+`Traceroute` operates primarily at **Layer 3 (Network Layer)**, but it entirely depends on **Layer 2 (Data Link Layer)** framing to move across each physical hop.
+
+* **The Layer 3 Mechanism (TTL):** Traceroute sends packets (usually UDP or ICMP) with an IP header containing a **Time to Live (TTL)** value, starting at 1.
+* **The Hop Discovery:**
+1. The packet leaves your computer wrapped in a Layer 2 frame destined for your default gateway's MAC address.
+2. The first router receives it, decrements the TTL to 0, drops the packet, and generates an ICMP "Time Exceeded" message back to you. The IP address of this router is recorded as "Hop 1."
+3. For the next packet, traceroute sets TTL to 2. It reaches Router 1 (which decrements TTL to 1 and forwards it) and then hits Router 2 (which drops it, decrementing TTL to 0). Router 2's IP address is recorded as "Hop 2."
+
+
+* **The Layer 2 Reality Behind It:** Even though `traceroute` shows you a list of **IP addresses** (routers), every single one of those intermediate steps required the packet to be unzipped from one Layer 2 frame and zipped into a new Layer 2 frame with completely new source and destination MAC addresses to cross that specific wire or link.
+
+---
