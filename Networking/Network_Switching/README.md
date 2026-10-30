@@ -190,3 +190,73 @@ When communication starts on a freshly booted switch (e.g., Host A communicating
 
 ---
 
+
+# Introduction to Ethernet | CCNA Layer 2 Basics
+
+**Source:** [Introduction to Ethernet | CCNA Layer 2 Basics](http://www.youtube.com/watch?v=BaC80OGlaTg)
+**Channel:** telecomTech
+
+---
+
+## 1. Overview and History of Ethernet
+
+* **Dominant Technology:** Ethernet is the dominant technology functioning at Layer 2 (Data Link Layer) for virtually all modern network switches.
+* **Origins:** Created on May 22, 1973, connecting two computers via coaxial cable at 2.94 Mbps.
+* **IEEE Standards:** Adopted in the early 1980s by the IEEE under the standard **IEEE 802.3**.
+
+---
+
+## 2. Structure of the Ethernet Frame
+
+At the core of Ethernet is the Ethernet frame, which encapsulates Layer 3 IP packets as its payload and wraps them with a header and trailer.
+
+### Header Fields:
+
+1. **Destination MAC Address:** The physical address of the intended recipient (or next-hop router) on the local network segment.
+2. **Source MAC Address:** The physical address of the sending device.
+3. **EtherType (or Length Field):**
+* Identifies the upper-layer network protocol contained in the payload (e.g., IPv4 or IPv6).
+* Alternatively used to indicate the length of the payload in bytes/octets.
+
+
+
+### Preamble and Start of Frame Delimiter (SFD):
+
+* **Preamble (7 Bytes / 56 Bits):** Consists of alternating ones and zeros, used to help receiving devices synchronize their clocks with transmitters at the bit level.
+* **Start of Frame Delimiter (SFD):** Indicates the exact start of the frame so the receiver can begin interpreting the header bits.
+
+### Trailer Fields:
+
+* **Frame Check Sequence (FCS):** A 4-byte field containing a Cyclic Redundancy Check (CRC) value computed from the frame's bits.
+* **Error Detection:** The receiver runs the same algorithm; if the computed value doesn't match the FCS value, the frame is deemed corrupted and **dropped**. Ethernet detects errors at the physical level but relies on upper layers for error correction.
+
+
+
+---
+
+## 3. MAC Addresses in Ethernet
+
+* **Format & Structure:** 48-bit physical addresses typically represented in hexadecimal for humans, but handled in binary by devices.
+* **Factory Assignment:** Hardwired directly into network interface cards (NICs) at the factory with unique identifiers to prevent duplication on a network segment.
+* **Universal Scope:** Found on all network devices (PCs, printers, cameras, wireless access points) utilizing Ethernet or Wi-Fi to enable local Layer 2 identification and switching.
+
+---
+
+## 4. Optional Fields: VLAN Tags (IEEE 802.1Q)
+
+* **Location:** Inserted between the Source MAC address and the EtherType field.
+* **Contents:** Contains VLAN ID tags and Quality of Service (QoS) information.
+* **Usage:** Primarily utilized on trunk links between switches to manage segmented traffic and prioritize data flows.
+
+
+
+
+<br>
+
+<br>
+
+---
+
+---
+
+
