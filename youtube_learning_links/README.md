@@ -18,8 +18,13 @@
 
 # Computer Networking
 
--[20 network concepts](https://www.youtube.com/watch?v=qUHyCjOo8Z8)
- 
+- [20 network concepts](https://www.youtube.com/watch?v=qUHyCjOo8Z8)
+
+- [Layer 2 concepts - Switching](https://www.youtube.com/watch?v=VYukAH86d2I&list=PLmVr8r1kmMm3HrwOC3beb96JjrBh46AIt)
+
+- [SD-WAN](https://www.youtube.com/watch?v=vVXu5SWfwvE&list=PLZnlAkYyiRMk)
+
+ - 
 
 ## BGP
 
@@ -36,4 +41,8 @@
 - WireGuard (Software Defined Mesh Network)
 
 - Software-defined Networking
-- - 
+
+
+# Monitoring
+
+- [click house](https://clickhouse.com/)
