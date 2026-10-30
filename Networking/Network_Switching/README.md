@@ -415,3 +415,60 @@ Virtual interfaces get unique MAC addresses through **pseudo-random generation u
 <br>
 
 
+# The MAC Address Table Explained | How Ethernet Switches Work
+
+**Source:** [The MAC Address Table Explained | How Ethernet Switches Work](http://www.youtube.com/watch?v=ikUv_IX8ZQc)
+**Channel:** telecomTech
+
+---
+
+## 1. Core Purpose of the MAC Address Table
+
+* **Definition:** A memory construct within a network switch that associates host MAC addresses with specific physical switch ports.
+* **Function:** Enables switches to correctly forward frames out of the appropriate exit interface rather than broadcasting every packet.
+
+---
+
+## 2. Table Maintenance and Aging Timer
+
+* **Learning Process:** Populated dynamically by reading the **source MAC address** of incoming frames and binding it to the ingress port.
+* **Aging Timer (Default):** Set to **300 seconds (5 minutes)** on Cisco switches (values may vary slightly by vendor).
+* **Why It Exists:** Switches have finite memory. The aging timer automatically flushes out entries for devices that have disconnected or stopped transmitting (crucial in high-churn environments like wireless APs connected to switches) to prevent table overflow and performance degradation.
+
+---
+
+## 3. Multi-Port Mappings and MAC Flapping
+
+* **Many-to-One Mapping:** Multiple MAC addresses can be associated with a single port (e.g., when an access point, hub, or downstream switch connects multiple hosts to a single uplink port).
+* **One-to-Many Restriction (Illegal):** A single MAC address *cannot* map to multiple switch ports.
+* **MAC Flapping:** If a MAC address is suddenly learned on a new port, it is deleted from the old port and reassigned. If it continuously bounces between ports, it is called **MAC flapping**, which indicates a misconfiguration or loop and causes unpredictable behavior.
+
+---
+
+## 4. CAM (Content Addressable Memory) Hardware Lookup
+
+* **Why CAM is Used:** Traditional software-based searches examine entries one by one (taking multiple CPU cycles, slowing down as tables grow).
+* **How CAM Works:** A specialized hardware memory type that compares the search value (destination MAC address) against *all stored entries simultaneously in parallel*.
+* **Line-Rate Performance:** Lookup time remains constant, taking only **one CPU cycle**, allowing switches to forward frames at line rate with extremely low latency.
+
+---
+
+## 5. Integration with VLANs
+
+* **VLAN Column:** MAC address tables also track which VLAN each MAC address belongs to.
+* **Scope & Isolation:** Because VLANs create separate layer 2 broadcast domains, lookups and unknown unicast flooding are strictly scoped within the matching VLAN, preventing data leaks across network segments.
+
+
+<br>
+
+<br>
+
+---
+
+---
+
+<br>
+
+<br>
+
+
