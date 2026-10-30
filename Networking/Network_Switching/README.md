@@ -472,3 +472,118 @@ Virtual interfaces get unique MAC addresses through **pseudo-random generation u
 <br>
 
 
+Unlike standard computer memory (RAM) where you search by looking up an *address* (index), **Content Addressable Memory (CAM)** turns the process completely upside down: **you feed it the data (the content), and it searches every single entry simultaneously.**
+
+The secret to how CAM achieves $O(1)$ constant-time lookup ($1$ clock cycle) lies entirely in **hardware design and parallel processing**, rather than software algorithms.
+
+---
+
+### 1. Standard RAM vs. CAM: Address vs. Content
+
+* **Standard RAM (Software Search):** If you store 10,000 MAC addresses in a standard software hash table or array, finding one requires searching through entries sequentially or traversing a tree. As the table grows, the number of CPU instructions increases ($O(N)$ or $O(\log N)$).
+* **CAM (Hardware Parallel Search):** You hand the CAM chip a destination MAC address. Instead of looping through entries one by one, the chip broadcasts that MAC address to **every single stored entry at the exact same microsecond**.
+
+---
+
+### 2. The Hardware Secret: Logic Gates in Every Cell
+
+In standard RAM, a memory cell is just a storage transistor. But in a CAM chip, **every single memory bit-cell is paired with its own dedicated comparison logic** (built using XOR/XNOR gates) directly on the silicon wafer.
+
+* Every row in a CAM table has a **Match Line** running across it.
+* When the search key (the destination MAC) is placed on the bus, every row compares its stored bits against the search bits **in parallel**, using hardware gates.
+* If every bit in a row matches the search key, that row's Match Line stays high (indicating a "hit"). If any bit differs, the Match Line drops low.
+
+Because the comparison is physical and happens simultaneously across all rows via electrical circuits, **it takes the exact same amount of time whether the table has 1 entry or 8,000 entries.**
+
+---
+
+### 3. Step-by-Step in a Single Clock Cycle
+
+When a frame arrives at a switch, the ASIC (Application-Specific Integrated Circuit) handling the switching does the following in **one single clock cycle**:
+
+1. **Broadcast:** The destination MAC address is driven onto the search lines of the CAM chip.
+2. **Simultaneous Compare:** All rows perform a parallel bitwise comparison instantly.
+3. **Match & Priority Encoding:** If a row matches, a priority encoder looks at the winning Match Line and instantly outputs the associated port number and VLAN ID stored next to that row.
+
+---
+
+### The Trade-off: Why Isn't Everything Built with CAM?
+
+If CAM is so fast, why isn't computer RAM made out of CAM?
+
+* **Power & Heat:** Because every single memory cell has active comparison circuitry running voltage through it constantly, CAM consumes a massive amount of power and generates significant heat compared to standard RAM.
+* **Density & Cost:** CAM requires significantly more transistors per bit, making it much more expensive and physically larger to manufacture in high capacities.
+
+For switches, however, the ability to make forwarding decisions at blazing-fast line rates makes the hardware cost of CAM well worth it.
+
+
+<br>
+
+<br>
+
+---
+
+---
+
+<br>
+
+<br>
+
+
+
+# Collision Domains Explained | Layer 2 Switching Fundamentals
+
+**Source:** [Collision Domains Explained | Layer 2 Switching Fundamentals](http://www.youtube.com/watch?v=_ROh5wcJOl0)
+**Channel:** telecomTech
+
+---
+
+## 1. What is a Collision Domain?
+
+* **Definition:** A collision domain is a section of a network network infrastructure where data packets can collide with one another if transmitted simultaneously.
+* **The Hub Era (Shared Medium):** In older networks built using **hubs**, all connected devices share a single common medium. A hub simply takes an incoming frame and broadcasts/repeats it out of every port without inspecting MAC addresses.
+
+---
+
+## 2. How Collisions Occur on Copper Cabling
+
+* **Signal Addition:** When two devices transmit data simultaneously on a copper cable, their electromagnetic waveforms mix together, creating an unreadable, corrupted signal (higher voltage spike, e.g., up to 5V instead of the standard 1–2.5V).
+* **CSMA/CD (Carrier Sense Multiple Access / Collision Detection):**
+* **Carrier Sense:** Devices listen to the wire first to check if anyone else is transmitting.
+* **Multiple Access:** Many devices share the same network medium.
+* **Collision Detection:** If a collision is detected via voltage spikes, all devices stop transmitting, wait a random back-off period, and retry to minimize repeat collisions.
+
+
+
+---
+
+## 3. How Switches Eliminate Collision Domains
+
+* **Microsegmentation:** Modern **switches** maintain a MAC address table and selectively forward frames only to the specific egress port rather than broadcasting them everywhere.
+* **Per-Port Collision Domains:** Each individual port on a switch acts as its own separate, isolated collision domain.
+* **Full-Duplex Operation:** Modern Ethernet links use full-duplex communication (separate transmit and receive channels simultaneously), completely eliminating collisions under normal operating conditions.
+* *Note:* CSMA/CD is no longer needed on modern full-duplex switch ports unless explicitly misconfigured to half-duplex, or if physical cable damage creates anomalous electrical noise. Fiber optic cabling also does not experience electrical collisions.
+
+---
+
+## 4. Wireless Networks: CSMA/CA
+
+* **The Wireless Medium:** Wi-Fi networks cannot easily detect collisions on the airwaves because transmitted radio waveforms do not simply add up into readable voltage spikes in the same way copper wires do.
+* **CSMA/CA (Carrier Sense Multiple Access / Collision Avoidance):** Instead of *detecting* collisions after they happen, Wi-Fi uses algorithms to *avoid* collisions by coordinating transmission times among clients.
+
+
+
+<br>
+
+<br>
+
+---
+
+---
+
+<br>
+
+<br>
+
+
+
