@@ -259,4 +259,75 @@ At the core of Ethernet is the Ethernet frame, which encapsulates Layer 3 IP pac
 
 ---
 
+<br>
+
+<br>
+
+
+# What Is a MAC Address? | Ethernet & Layer 2 Simply Explained!
+
+**Source:** [What Is a MAC Address? | Ethernet & Layer 2 Simply Explained!](http://www.youtube.com/watch?v=7CvW0zmZT_g)
+**Channel:** telecomTech
+
+---
+
+## 1. Overview and Core Uses of MAC Addresses
+
+* **Definition:** A 48-bit unique value assigned to every network device supporting Ethernet and Wi-Fi standards.
+* **Key Functions in Layer 2:**
+* **MAC Address Learning:** Populates the switch MAC address table for proper frame forwarding.
+* **ARP (Address Resolution Protocol):** Resolves MAC addresses from destination IP addresses.
+* **Port Security & Filtering:** Allows or blocks network devices based on their MAC addresses.
+* **Spanning Tree Protocol (STP):** Utilizes MAC addresses in its operation to prevent Layer 2 loops.
+* **Wi-Fi Association:** Used for client and access point identification.
+
+
+
+---
+
+## 2. Structure and Notation of MAC Addresses
+
+* **Format:** Composed of 48 bits, read in binary by devices, but represented in hexadecimal for humans.
+* **Common Notation Styles:**
+* **Cisco:** Three sets of four hex digits separated by dots (e.g., `aabb.ccdd.eeff`).
+* **Windows:** Six groups of two hex digits separated by hyphens (e.g., `aa-bb-cc-dd-ee-ff`).
+* **Linux / macOS:** Six groups of two hex digits separated by colons (e.g., `aa:bb:cc:dd:ee:ff`).
+
+
+
+---
+
+## 3. Assignment: OUI and Manufacturer Unique Identification
+
+* **Globally Administered Addresses (Burned-In):** Hardwired into the non-volatile memory of network interfaces by manufacturers. Assigned per interface, not per device.
+* **IEEE Breakdown (48 bits):**
+* **First 24 Bits (OUI - Organizationally Unique Identifier):** Identifies the vendor/manufacturer (e.g., Cisco, Intel, Apple). Allows tools to determine the manufacturer from the MAC address.
+* **Last 24 Bits:** Assigned uniquely by the manufacturer for each individual interface, ensuring global uniqueness.
+
+
+
+---
+
+## 4. Software Modification, Virtual MACs, and the U/L Bit
+
+* **MAC Spoofing / Overriding:** While burned into hardware, operating systems can override the active MAC address in memory for legitimate or malicious purposes.
+* **Virtual Devices & LAA (Locally Administered Addresses):**
+* Virtual machines and containers generate virtual MAC addresses via hypervisors.
+* **U/L Bit (Universal/Local Bit):** The second least significant bit of the first byte of the MAC address.
+* If **0**: Universally administered (factory assigned).
+* If **1**: Locally administered (LAA / software or administrator generated).
+
+
+<br>
+
+<br>
+
+---
+
+---
+
+<br>
+
+<br>
+
 
