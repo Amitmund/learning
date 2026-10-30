@@ -25,6 +25,7 @@
 - [overlay network blog](https://www.xda-developers.com/overlay-networks-beyond-tailscale-netbird-my-new-favorite/)
 - Tailscale
 - NetBird
-- WireGuard
+- WireGuard (Software Defined Mesh Network)
 
-- 
+- Software-defined Networking
+- - 
