@@ -3,6 +3,7 @@
 [Network-switching](https://www.youtube.com/watch?v=VYukAH86d2I&list=PLmVr8r1kmMm3HrwOC3beb96JjrBh46AIt)
 
 
+
 # Introduction to Network Switching | Layer 2 Fundamentals Explained
 
 **Source:** [Introduction to Network Switching | Layer 2 Fundamentals Explained](http://www.youtube.com/watch?v=VYukAH86d2I)
@@ -112,4 +113,80 @@ Here is how this process links directly with how `traceroute` works:
 
 * **The Layer 2 Reality Behind It:** Even though `traceroute` shows you a list of **IP addresses** (routers), every single one of those intermediate steps required the packet to be unzipped from one Layer 2 frame and zipped into a new Layer 2 frame with completely new source and destination MAC addresses to cross that specific wire or link.
 
+
+
+<br>
+
+<br>
+
 ---
+
+---
+
+
+
+# How a Network Switch Works | CCNA Layer 2 Explained Simply
+
+**Source:** [How a Network Switch Works | CCNA Layer 2 Explained Simply](http://www.youtube.com/watch?v=Hw38pPb-XNA)
+**Channel:** telecomTech
+
+---
+
+## 1. Overview of Network Switches and Physical Ports
+
+* **Physical Connections:** Switches contain multiple ports designed to connect end devices (PCs, laptops, IP phones, cameras, printers, TVs, wireless access points) or other network gear.
+* **Port Types:**
+* **RJ-45 Ports:** Used with traditional copper Ethernet cables.
+* **SFP Ports:** Used with transceivers to connect various types of fiber optic cables.
+
+
+* **Scalability:** Switch sizes vary widely (ranging from 4, 8, 24, 48 fixed ports up to modular chassis models supporting hundreds of ports via multiple line cards).
+
+---
+
+## 2. The MAC Address Table
+
+* **Definition:** A dynamic lookup table stored in the memory of a switch that maps specific MAC addresses to specific physical switch ports.
+* **Initial State:** When a switch is freshly powered on, its MAC address table is completely **empty**.
+* **Core Function:** The switch examines the destination MAC address of an incoming frame, checks this table, and forwards the frame only out of the corresponding port, eliminating the need to broadcast every packet.
+
+---
+
+## 3. Step-by-Step Operation: Learning and Forwarding
+
+When communication starts on a freshly booted switch (e.g., Host A communicating with Host B), the switch executes a two-step process upon receiving a frame:
+
+1. **Source Learning (The Ingress Port):**
+* The switch reads the **source MAC address** of the incoming frame.
+* It logs that source MAC address in its MAC address table, associating it with the exact physical port the frame just arrived on.
+
+
+2. **Destination Lookup and Flooding/Forwarding:**
+* The switch checks the **destination MAC address** against its table to find the exit port.
+* **If the table is empty (Unknown Unicast):** The switch performs **flooding**, sending the frame out of *all* ports except the one it was received on.
+* **If the destination is known:** The switch performs selective **switching**, forwarding the frame out of *only* the specific port associated with that destination MAC address.
+
+
+
+---
+
+## 4. Handling Local vs. Remote Traffic (Hop-by-Hop Routing)
+
+* **Same Network Segment (Local):**
+* If the destination host is on the same local network, the destination MAC address inside the Ethernet frame belongs directly to that target host.
+
+
+* **Different Network Segment (Remote):**
+* If the destination resides on a different network (e.g., reaching across routers to Host Z), the destination MAC address of the very first hop cannot be the remote host.
+* Instead, Layer 2 encapsulates the frame using the **MAC address of the default gateway** (router interface) so the switch can deliver it to the router, which then handles subsequent routing hops.
+
+
+
+<br>
+
+<br>
+
+---
+
+---
+
