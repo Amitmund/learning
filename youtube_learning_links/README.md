@@ -16,7 +16,15 @@
 
 
 
-# BGP
+# Computer Networking
+
+-[20 network concepts](https://www.youtube.com/watch?v=qUHyCjOo8Z8)
+ 
+
+## BGP
+
+- [BGP](https://www.youtube.com/watch?v=fo9YxxKNO_g&list=PLmVr8r1kmMm0ncoc9L6bFICpuNbo7Tumu)
+
 
 
 
