@@ -39,7 +39,7 @@
 
 ---
 
-- Question: How the policies get passed to these SD-WAN's different devices?
+### Question: How the policies get passed to these SD-WAN's different devices?
 
 In an SD-WAN architecture, policies are decoupled from individual devices and managed through a centralized framework. Instead of logging into routers one-by-one via CLI, network administrators define policies in a **Centralized Management Dashboard**, which then pushes them to edge devices using automated protocols and overlay control planes.
 
