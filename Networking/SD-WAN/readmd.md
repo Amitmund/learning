@@ -75,10 +75,59 @@ Depending on what the policy is trying to achieve, SD-WAN splits distribution in
 
 ---
 
+### SD-WAN control plane's Application Aware Routing:
+
+- Applicaiton
+- user/role
+- policy
+- Time/Location
+  
+- Traditional Routing makes decisions based on prefixes, metrics, Administrated Distanced (ADs), next hops and routing protocols.
+- SD-WAN can make routing decisions based on the type of application and the current quality of the available path.
+
+- Applications and Destinations:
+  - Voice (Low Latency)
+  - SAAS (Business Apps)
+  - File Transfer (Bulk / Non-Critical)
+  - Guest Internet (Direct Internet)
+  - Data Center (Private Resources)
+  - Security Services (Secure Inspection)
+ 
+- So, SD-WAN makes decisions based on what the application needs and how well each path is performing.
+- SD-WAN allows organizaitons to use multiple WAN links more intelligently and effciently.
+
+NOTE:
+
+- SD-WAN does not make other network technologies obsolete.
+- It doesn't make routing, IPsec, QoS and troubleshooting disappear.
 
 
+---
+
+### Cisco-Specific terms for SD-WAN:
+
+- `vManage/SD-WAN manager` - used for management, configuration, monitoring and policy creation.
+- `vSmart/SD-WAN controller` - part of the control plane which help distribute routing and policy information across the fabric.
+- `vBond/SD-WAN validator` - helps with the initial orchestration and onboarding of devices into the fabric.
+- `WAN Edge routes` - devices that sit at the network edge location, and forward traffic.
+- `Overlay Management Protocol (OMP)` - Cisco control protocol used to exchange routing, transport and policy-related info.
+- Transport Locators (TLOCs) - help identify the transport attachment points used by WAN edge routes to build the overlay.
+
+  
+---
+
+### What we will learn on this:
+
+- Why does SD-WAN exist? What problems does it solve?
+- What is SD-WAN and how does it differ from traditional WANs?
+- Underlay vs Overlay, what's the difference?
+- SD-WAN architecture, including management and control planes.
+- How do SD-WAN devices join the fabric?
+- OMP, application-aware routing, centralized policies, and segmentation using `VRFs` and `VPNs`
+- Direct internet access, SaaS optimization, security, SASE, QoS, troubleshooting, real-world design and the skills you need to learn.
 
 
+---
 
 
 
