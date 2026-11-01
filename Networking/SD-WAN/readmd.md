@@ -1,4 +1,15 @@
 
+# Cisco SD-WAN terms:
+- vManage
+- vSmart
+- vBond
+- WAN Edge routers
+- OMP
+- TLOCs
+- Colors
+- VPNs
+- VRFs
+- Centralized Policies
 
 
 
