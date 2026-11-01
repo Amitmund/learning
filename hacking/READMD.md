@@ -2,7 +2,8 @@
 
 - [The Hacker Academy](https://www.youtube.com/watch?v=uPbQNFuDGUs)
 
-- SHODAN.IO (Google for hacker)
+- [Google for Hacker - shadan](www.SHODAN.IO)
+- [TryHackme.com](www.tryhackme.com)
 
 # Hacking process (Learn is it legal or not first).
 
