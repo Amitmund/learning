@@ -1,5 +1,8 @@
 
 # SD-WAN
+
+SD-WAN is modern way of building and controlling the WAN using `centralized management`, `secure overlays`, `multiple transports`, `application-aware decisions`, `segmentation` and `policies`.
+
 - Software Defined Wide Area Network
 - Branch offices to a Datacenter
 - Remote sites to headquaters
